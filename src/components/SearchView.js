@@ -7,11 +7,11 @@ const MovieCard = ({ movie }) => {
         <div className="col-lg-3 col-md-3 col-2 my-4">
             <div className="card">
             <div className="card-body">
-                <h5 className="card-title">{movie.original_title}</h5>
-                <p className="card-text">{movie.title} {movie.release_date}</p>
+                <h5 className="card-title">{movie.original_title}</h5><br />
+                <p className="card-subtitle">{movie.title} {movie.release_date}</p><br />
                 <p className="card-text">{movie.overview}</p>
                 <img src={posterUrl} className="card-img-top" alt={movie.original_title} />
-                <p className="card-text">Rating: {movie.popularity}</p>
+                <p className="card-rating">Rating: {movie.popularity}</p>
             </div>
         </div>
         </div>
