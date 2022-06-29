@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import SearchView from './components/SearchView';
+import { useState, useEffect } from 'react';
+const api_key = "4ddf33eaaf778f338e0cc20a663ffff8";
+
+
 
 function App() {
+
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchText, setSearchText] = useState('');
+
+  
+  useEffect(() => {
+    if(searchText){
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${searchText}&page=1&include_adult=false}`)
+      .then(response => response.json())
+      .then(data => {
+        setSearchResults(data.results)
+      })
+  }
+  }, [searchText])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar searchText={searchText} setSearchResults={setSearchText}/>
+      <SearchView keyword={searchText} searchResults={searchResults} />
+      
     </div>
   );
 }
