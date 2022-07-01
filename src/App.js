@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import SearchView from './components/SearchView';
 import { useState, useEffect } from 'react';
-const api_key = "4ddf33eaaf778f338e0cc20a663ffff8";
+const api_key = "YOUR_API_KEY";
 
 
 
